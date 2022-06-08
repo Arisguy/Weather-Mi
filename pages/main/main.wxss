@@ -1,0 +1,5 @@
+/* pages/main/main.wxss */
+.main{
+  height: 1500rpx;
+  background-image: -moz-element("@/images/skyBlue.jpg");
+}

@@ -1,0 +1,8 @@
+<custom-navigation-bar bg_color="{{transparentClass}}" titleLeft="{{true}}">
+  <view slot="content">Weather Now</view>
+</custom-navigation-bar>
+
+<!--主页面内容-->
+<view class="main">
+
+</view>

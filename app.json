@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/cityList/cityList",
+    "pages/more/more",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#4395F9",
+    "navigationBarTitleText": "Arisguy",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "custom-navigation-bar": "/components/custom-navigation-bar/custom-navigation-bar",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-config-provider": "@vant/weapp/config-provider/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}
