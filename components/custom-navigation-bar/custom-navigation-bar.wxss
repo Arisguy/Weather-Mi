@@ -2,6 +2,9 @@
   background-color: #4395f9;
   color: #fff;
 }
+.transparentClass {
+  background-color: rgba(0,0,0,0) !important;
+}
 .cu-custom view {
   box-sizing: border-box;
 }

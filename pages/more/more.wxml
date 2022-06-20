@@ -1,2 +1,15 @@
-<!--pages/more/more.wxml-->
-<text>pages/more/more.wxml</text>
+<custom-navigation-bar isBack="{{true}}">
+  <view slot="content">当前位置</view>
+</custom-navigation-bar>
+<view class="map_container">
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map>
+</view>
+<view class="place_info mt40 pdl20">
+  <view class="mt10">{{rgcData.business}}</view>
+  <view class="mt10">{{rgcData.address}}</view>
+  <view class="mt10">{{rgcData.desc}}</view>
+  <view class="mt10">日期: {{rgcData.date}}</view>
+  <view class="mt10">天气: {{rgcData.text}}</view>
+  <view class="mt10">温度: {{rgcData.temp}}℃ (体感：{{rgcData.feelsLike}}℃)</view>
+  <view class="mt10">风力: {{rgcData.windDir}} {{rgcData.windScale}}级</view>
+</view>

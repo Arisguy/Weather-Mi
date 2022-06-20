@@ -1,5 +1,270 @@
 /* pages/main/main.wxss */
-.main{
-  height: 1500rpx;
-  background-image: -moz-element("@/images/skyBlue.jpg");
+.icon_ws {
+  display: inline-block;
+  height: 24rpx;
+  overflow: hidden;
+  width: 24rpx;
+}
+
+.midSize {
+  display: inline-block;
+  height: 35rpx;
+  overflow: hidden;
+  width: 35rpx;
+}
+.main {
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+.bcg_ws {
+  position: fixed;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.head_ws {
+  display: flex;
+  justify-content: space-around;
+
+  z-index: 100;
+  width: 100%;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #fff;
+}
+
+.head_ws .center {
+  width: 70%;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.hostinfo_ws {
+  display: flex;
+  z-index: 100;
+  margin: 0 auto;
+  width: 90%;
+  font-size: 20rpx;
+  font-weight: 500;
+  color: #fff;
+}
+.dot_ws {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  font-size: 25rpx;
+  font-weight: 500;
+  color: #868b9b;
+}
+
+.chenge_ws {
+  position: absolute;
+  z-index: 1200;
+  top: 15%;
+  right: 30rpx;
+}
+
+.avatarInfo {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.avatarInfo .avatar {
+  display: block;
+  overflow: hidden;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.avatarInfo .name {
+  padding: 0 20rpx;
+  font-size: 30rpx;
+}
+.avatarInfo .downArrow {
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.temp_ws {
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+}
+.temp_ws .value {
+  font-size: 120rpx;
+}
+.temp_ws .temp {
+  position: absolute;
+  display: inline-block;
+  padding: 30rpx 0 0 5rpx;
+  font-size: 30rpx;
+}
+
+.temp_ws .desc {
+  width: 100%;
+  font-size: 35rpx;
+  text-align: center;
+}
+
+.airInfo_ws {
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+  font-weight: 500;
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.airInfo_ws .sub_ {
+  display: flex;
+  align-items: center;
+}
+
+.airInfo_ws image {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+}
+.button_ws {
+  margin: 20rpx auto;
+  width: 95%;
+  background-color: rgba(165, 177, 194, 0.5) !important;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  font-weight: 500;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 25rpx 0;
+  border-radius: 30rpx;
+}
+
+.oneday_ws {
+  background-color: rgba(165, 177, 194, 0.2) !important;
+  margin: 40rpx auto;
+  width: 95%;
+  display: flex;
+  border-radius: 30rpx;
+  justify-content: center;
+  z-index: 100;
+  font-weight: 500;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 25rpx 0;
+}
+
+.oneday_ws .guides {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 24rpx;
+  padding-top: 20rpx;
+  background: rgba(165, 177, 194, 0);
+  margin-bottom: 20rpx;
+  overflow-x: scroll;
+}
+.oneday_ws .title {
+  border-bottom: 1rpx solid rgba(250, 250, 250, 0.2);
+  background: rgba(0, 0, 0, 0);
+  font-size: 24rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.oneday_ws .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 170rpx;
+  flex-shrink: 0;
+}
+.oneday_ws image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.oneday_ws .i {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+}
+
+.sun_ws {
+  z-index: 100;
+  font-weight: 500;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 25rpx 0;
+}
+
+.sun_ws .sun_rise_set .sun_rise_set_child {
+  display: inline-block;
+  padding-left: 35rpx;
+}
+
+.sun_ws .item_ws {
+  text-align: center;
+}
+
+.sun_ws .item_ws .top {
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+}
+.sun_ws .item_ws .bom {
+  text-align: center;
+  font-size: 20rpx;
+  color: #ccc;
+}
+
+.life_ws {
+  margin: 20rpx auto;
+  width: 95%;
+  border-radius: 30rpx;
+  background-color: rgba(165, 177, 194, 0.2) !important;
+  z-index: 100;
+  font-weight: 500;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 25rpx 0;
+}
+
+.life_ws .life_item_ws {
+  text-align: center;
+}
+
+.life_ws .life_item_ws .top image {
+  width: 65rpx;
+  height: 65rpx;
+}
+.life_ws .life_item_ws .bom {
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  margin: 10rpx 0 35rpx 0;
+}
+
+.last_desc {
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  font-weight: 500;
+  color: #fff;
+  font-size: 20rpx;
 }

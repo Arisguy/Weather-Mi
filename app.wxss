@@ -11,6 +11,59 @@
 
 /**自定义weapp主题样式**/
 page {
-  --button-info-background-color: #007aff;
-  --button-info-border-color: #007aff;
+  --button-info-background-color: rgba(165, 177, 194, 0.3) !important;
+  --button-info-border-color: rgba(165, 177, 194, 0.2) !important;
+}
+
+.mt100 {
+  margin-top: 100rpx;
+}
+.mt60 {
+  margin-top: 60rpx;
+}
+.mt40 {
+  margin-top: 40rpx;
+}
+.mt30 {
+  margin-top: 30rpx;
+}
+.mt20 {
+  margin-top: 20rpx;
+}
+.mt10 {
+  margin-top: 12rpx;
+}
+.mb50 {
+  margin-bottom: 50rpx;
+}
+.mb20 {
+  margin-bottom: 20rpx;
+}
+.pading {
+  padding: 0 35rpx;
+}
+.pdl50 {
+  padding-left: 50rpx;
+}
+.pdl40 {
+  padding-left: 40rpx;
+}
+.pdl20 {
+  padding-left: 20rpx;
+}
+.pdl10 {
+  padding-left: 10rpx;
+}
+.pdr20 {
+  padding-right: 20rpx;
+}
+.pdr10 {
+  padding-right: 10rpx;
+}
+.pdl30 {
+  padding-left: 30rpx;
+}
+
+.font30 {
+  font-size: 30rpx;
 }

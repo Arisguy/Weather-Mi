@@ -1,8 +1,160 @@
 <custom-navigation-bar bg_color="{{transparentClass}}" titleLeft="{{true}}">
-  <view slot="content">Weather Now</view>
+  <view slot="content">Weather MI</view>
 </custom-navigation-bar>
 
 <!--主页面内容-->
 <view class="main">
+  <van-toast id="van-toast" />
+  <van-dialog id="van-dialog" style="color: #333;" />
+  <image class='bcg_ws' src='{{BackgroundImageList[bcgImg_index].src}}' mode='aspectFill'></image>
+  <view class="head_ws">
+    <view class="left">
+      <van-icon size="30rpx" name="guide-o" color="#fff" bindtap="queryBaiduMap" />
+    </view>
+    <view class="center">
+      <view>{{now_position_info.address}}</view>
+    </view>
+    <view>
+      <van-icon size="30rpx" name="plus" color="#fff" bindtap="selectCity" />
+    </view>
+  </view>
+  <view class='dot_ws'>
+    <van-icon size="10rpx" name="guide-o" color="#B2B6B7" />
+    <text style="padding: 0 10rpx;padding-bottom: 12rpx;">.</text>
+    <text style="padding-bottom: 12rpx;">.</text>
+  </view>
 
+  <view class='chenge_ws' bindtap="changeBackImg">
+    <van-button type="info" size="small" round icon="replay">
+      一键换肤
+    </van-button>
+  </view>
+
+  <!-- <view class='hostinfo_ws mt40'>
+        <view class='avatarInfo' catchtap='showBcgImgArea'>
+            <open-data class='avatar' type='userAvatarUrl'></open-data>
+            <open-data class='name' type='userNickName'></open-data>
+            <image class='downArrow' src='/images/down.png'></image>
+        </view>
+    </view> -->
+
+  <view class="temp_ws mt100">
+    <!-- <van-icon size="60rpx" name="arrow-left" color="#f0f0f0" bindtap="changeBackImg" data-arrow="left" /> -->
+    <text></text>
+    <view>
+      <text class="value">{{currentWeatherInfo.temp}}</text>
+      <text class="temp">℃</text>
+    </view>
+    <text></text>
+    <!-- <van-icon size="60rpx" name="arrow" color="#f0f0f0" bindtap="changeBackImg" data-arrow="rgiht" /> -->
+  </view>
+  <view class="temp_ws mb50">
+    <text class="desc">{{currentWeatherInfo.text}}</text>
+  </view>
+  <view class='hostinfo_ws'>
+    {{BackgroundImageList[bcgImg_index].subTitle}}
+  </view>
+
+  <view class="airInfo_ws pading mt40">
+    <view class="sub_">
+      <image src="/icon/1053.svg" alt="QWeather" width="32" height="32"></image>
+      <text class="pdl10">空气 {{currentAirInfo.category}} {{currentAirInfo.aqi}}</text>
+    </view>
+    <view class="sub_">
+      <image src="/icon/399.svg" alt="QWeather" width="32" height="32"></image>
+      <text class="pdl10">{{rainSummary}}</text>
+    </view>
+  </view>
+  <view class="airInfo_ws pading mt40" wx:for="{{tenDaysWeatherInfo}}" wx:key="index">
+    <view class="sub_">
+      <image src="/icon/{{item.iconDay}}.svg" alt="QWeather" width="32" height="32"></image>
+      <text class="pdl10 pdr10 font30">{{ index == 0 ? '今天' : index==1 ? '明天' : item.week_day}} {{item.mouth_day}} {{index ==0 ? item.textNight : item.textDay}}</text>
+      <van-tag round color="#98A6BB" text-color="#fff">{{index ==0 ? currentAirInfo.category : '优'}}</van-tag>
+    </view>
+    <view class="sub_">
+      <text class="pdl10 font30">{{item.tempMax}}° / {{item.tempMin}}°</text>
+    </view>
+  </view>
+
+  <view class="button_ws mt30" bindtap="queryMoreDays">
+    {{showOrHideAlldays ? "收起" : "查看近10日天气"}}
+  </view>
+
+  <view class='oneday_ws mt40'>
+    <view class='guides'>
+      <view class='item' wx:for='{{forecast_24hours}}' wx:key='index'>
+        <view class='date i'>{{item.forecaastTime}}</view>
+        <view class='temperature i'>{{item.temp}}℃</view>
+        <view class='weather i'>
+          <text class="pdr10">{{item.text}}</text>
+          <image src="/icon/{{item.icon}}.svg" alt="QWeather" width="25" height="25"></image>
+        </view>
+        <view class='wind i'>{{item.windDir}}{{item.windScale}}级</view>
+      </view>
+    </view>
+  </view>
+
+  <van-row class="sun_ws mt40">
+    <van-col span="24" class="sun_rise_set ">
+      <view class="sun_rise_set_child mb20">
+        <image src="/icon/102.svg" alt="QWeather" class="icon_ws"></image>
+        <text class="pdl10">日出 {{sunRiseTime}}</text>
+      </view>
+      <view class="sun_rise_set_child mb20">
+        <image src="/icon/151.svg" alt="QWeather" class="icon_ws"></image>
+        <text class="pdl10">日落 {{sunSetTime}}</text>
+      </view>
+    </van-col>
+    <van-col span="6" class="item_ws">
+      <view class="top">{{currentWeatherInfo.windScale}}级</view>
+      <view class="bom">{{currentWeatherInfo.windDir}}</view>
+    </van-col>
+    <van-col span="6" class="item_ws">
+      <view class="top">{{currentWeatherInfo.humidity}}%</view>
+      <view class="bom">湿度</view>
+    </van-col>
+    <van-col span="6" class="item_ws">
+      <view class="top">{{currentWeatherInfo.feelsLike}}°</view>
+      <view class="bom">体感</view>
+    </van-col>
+    <van-col span="6" class="item_ws">
+      <view class="top">{{currentWeatherInfo.pressure}}hPa</view>
+      <view class="bom">气压</view>
+    </van-col>
+  </van-row>
+
+  <van-row class="life_ws mt30">
+    <van-col span="8" class="life_item_ws" bindtap="showPopup" data-info="{{item}}" wx:for="{{lifeStyleList}}" wx:key="index">
+      <view class="top">
+        <image src="/images/desc_{{item.type?item.type:1}}.png"></image>
+      </view>
+      <view class="bom">{{item.name}}</view>
+    </van-col>
+  </van-row>
+  <!-- 弹出层 -->
+  <van-popup show="{{ show_popup }}" round closeable position="bottom" custom-style="height: 35%;background-color:rgba(165, 177, 194, 0.8);" bind:close="onClose">
+    <view class="pdl40 mt20">
+      <van-icon size="35rpx" name="smile-o" color="#fff" />
+      <text class="pdl10">{{lifeStyleDetail.name}}</text>
+    </view>
+    <view class="pdl40 mt40">
+      <van-icon size="35rpx" name="notes-o" color="#fff" />
+      <text class="pdl10">{{lifeStyleDetail.date}}</text>
+    </view>
+    <view class="pdl40 mt20">
+      <van-icon size="35rpx" name="guide-o" color="#fff" />
+      <text class="pdl10">{{currentWeatherInfo.text}} {{tenDaysWeatherInfo[0].tempMax}}°/{{tenDaysWeatherInfo[0].tempMin}}°</text>
+    </view>
+    <view class="pdl40 mt20">
+      <image class="midSize" src="/images/desc_{{lifeStyleDetail.type?lifeStyleDetail.type:1}}.png"></image>
+      <text class="pdl10">{{lifeStyleDetail.category}}</text>
+    </view>
+    <view class="pdl40 mt20 pdr20">
+      <van-icon size="35rpx" name="comment-o" color="#fff" />
+      <text class="pdl10 ">{{lifeStyleDetail.text}}</text>
+    </view>
+  </van-popup>
+  <view class="last_desc">
+    数据来自Baidu地图API&和风天气
+  </view>
 </view>

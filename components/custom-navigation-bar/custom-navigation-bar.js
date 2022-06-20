@@ -23,10 +23,6 @@ Component({
       type: [Boolean, String],
       default: false
     },
-    isAvatar: {
-      type: [Boolean, String],
-      default: false
-    },
     bg_image: {
       type: String,
       default: ''
@@ -49,17 +45,35 @@ Component({
    */
   methods: {
     BackPage() {
-      wx.navigateBack({
-        delta: 1
-      });
-    },
-    toHome() {
-      wx.reLaunch({
-        url: '/pages/home/home',
-      });
-      // wx.switchTab({
-      //   url: '/pages/home/home',
-      // });
+      let pages = getCurrentPages()
+      let len = pages.length
+      wx.getStorage({
+        key: 'storage_location',
+        success: (res) => {
+          console.log("==================>   ", res.data);
+          if (len == 10) {
+            wx.redirectTo({
+              url: `/pages/main/main?address=${res.data}`,
+            })
+          } else {
+            wx.navigateTo({
+              url: `/pages/main/main?address=${res.data}`,
+            })
+          }
+        },
+        fail: (res) => {
+          if (len == 10) {
+            wx.redirectTo({
+              url: '/pages/main/main',
+            })
+          } else {
+            wx.navigateTo({
+              url: '/pages/main/main',
+            })
+          }
+        }
+      })
+
     },
   }
 })
